@@ -3,6 +3,6 @@ stages:
 
 build:
     stage: build
-    image: localhost:5000/kwagent:latest
+    image: 10.250.30.67:5000/kwagent:latest
     script:
         kwinject gcc foo.c -o foo
