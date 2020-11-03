@@ -3,6 +3,6 @@ stages:
 
 build:
     stage: build
-    image: gcc
+    image: kwagent
     script:
-        gcc foo.c -o foo
+        kwinject gcc foo.c -o foo
