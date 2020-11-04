@@ -3,6 +3,7 @@ stages:
 
 build:
     stage: build
-    image: 10.250.30.67:5000/kwagent
+#    image: 10.250.30.67:5000/kwagent
+    image: ladlestein/kwseeker
     script:
         kwinject gcc foo.c -o foo
