@@ -8,8 +8,8 @@ base analysis:
     image: ladlestein/kwagent
     script:
         - kwinject make
-        - kwbuildproject --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -o kwtables kwinject.out
-        - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT --name $CI_COMMIT_SHA projectile kwtables
+        - kwbuildproject --url http://10.250.30.67:8190/projectile -o kwtables kwinject.out
+        - kwadmin load --url http://10.250.30.67:8190 --name $CI_COMMIT_SHA projectile kwtables
 
 differential analysis:
     stage: analyze
@@ -20,7 +20,7 @@ differential analysis:
         - kwinject make
         - BASELINE=`kwadmin --url http://10.250.30.67:8190 list-builds projectile | tail -1`
         - git diff --name-only $BASELINE > diff_file_list.txt
-        - kwciagent create --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -b kwinject.out
+        - kwciagent create --url http://10.250.30.67:8190/projectile -b kwinject.out
         - kwciagent run -Y @diff_file_list.txt
         - kwciagent list -Y -F xml --report diff-results.xml @diff_file_list.txt
         - kwciagent list -Y -F scriptable --report quality_gate.txt @diff_file_list.txt
