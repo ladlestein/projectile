@@ -3,7 +3,8 @@ stages:
 
 base analysis:
     stage: analyze
-    only: master
+    only: 
+        - master
     image: ladlestein/kwagent
     script:
         - kwinject sh -c "gcc foo.c -o nothing"
