@@ -18,7 +18,7 @@ differential analysis:
     image: ladlestein/kwagent
     script: 
         - kwinject make
-        - BASELINE=`kwadmin --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT list-builds projectile | tail -1`
+        - BASELINE=`kwadmin --url http://10.250.30.67:8190 list-builds projectile | tail -1`
         - git diff --name-only $BASELINE > diff_file_list.txt
         - kwciagent create --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -b kwinject.out
         - kwciagent run -Y @diff_file_list.txt
