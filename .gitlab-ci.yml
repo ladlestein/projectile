@@ -24,7 +24,7 @@ differential analysis:
         - kwciagent run -Y @diff_file_list.txt
         - kwciagent list -Y -F xml --report diff-results.xml @diff_file_list.txt
         - kwciagent list -Y -F scriptable --report quality_gate.txt @diff_file_list.txt
-        - if [ ${ wc -l < quality_gate.txt } -gt 0 ]; then exit 1; fi
+        - if [ $( wc -l < quality_gate.txt ) -gt 0 ]; then exit 1; fi
     artifacts:
         when: always
         paths:
