@@ -9,7 +9,7 @@ base analysis:
     script:
         - kwinject make
         - kwbuildproject --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -o kwtables kwinject.out
-        - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT projectile kwtables
+        - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT --name $CI_COMMIT_SHA projectile kwtables
 
 differential analysis:
     stage: analyze
