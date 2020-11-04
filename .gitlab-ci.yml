@@ -3,6 +3,6 @@ stages:
 
 build:
     stage: build
-    image: 10.250.30.67:5000/purple:latest
+    image: 10.250.30.67:5000/larry:latest
     script:
         kwinject gcc foo.c -o foo
