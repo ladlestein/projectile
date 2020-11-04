@@ -1,7 +1,7 @@
 stages:
-    - build
+    - base analysis
 
-build:
+base analysis:
     stage: build
 #    image: 10.250.30.67:5000/kwagent
     image: ladlestein/kwagent
