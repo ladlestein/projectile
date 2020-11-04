@@ -6,6 +6,6 @@ build:
 #    image: 10.250.30.67:5000/kwagent
     image: ladlestein/kwagent
     script:
-        - kwinject gcc foo.c -o nothing
+        - kwinject sh -c "gcc foo.c -o nothing"
         - kwbuildproject --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -o kwtables kwinject.out
         - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT projectile kwtables
