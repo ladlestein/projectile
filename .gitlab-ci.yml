@@ -18,4 +18,15 @@ differential analysis:
     image: ladlestein/kwagent
     script: 
         - kwinject make
-        - BASELINEkwadmin --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile list-builds projectile
+        - BASELINE=$(kwadmin --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile list-builds projectile | tail -1)
+        - git diff --name-only $BASELINE > diff_file_list.txt
+        - kwciagent create --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -b kwinject.out
+        - kwciagent run -Y @diff_file_list.txt
+        - kwciagent list -Y -F xml --report diff-results.xml @diff_file_list.txt
+        - kwciagent list -Y -F scriptable --report quality_gate.txt @diff_file_list.txt
+        - iff [ ${ wc -l < quality_gate.txt } -gt 0 ]; then exit 1; fi
+    artifacts:
+        when: always
+        paths:
+            - diff-results.xml
+            - diff_file_list.txt
