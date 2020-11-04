@@ -3,6 +3,6 @@ stages:
 
 build:
     stage: build
-    image: 10.250.30.67:5000/my-ubuntu:latest
+    image: 10.250.30.67:5000/mrimage:latest
     script:
         kwinject gcc foo.c -o foo
