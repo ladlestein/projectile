@@ -7,7 +7,7 @@ base analysis:
         - master
     image: ladlestein/kwagent
     script:
-        - kwinject sh -c "gcc foo.c -o nothing"
+        - kwinject make
         - kwbuildproject --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -o kwtables kwinject.out
         - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT projectile kwtables
 
@@ -17,5 +17,5 @@ differential analysis:
         - master
     image: ladlestein/kwagent
     script: 
-        - kwinject sh -c "gcc foo.c -o nothing"
-        - kwadmin --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile list-builds projectile
+        - kwinject make
+        - BASELINEkwadmin --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile list-builds projectile
