@@ -7,5 +7,5 @@ build:
     image: ladlestein/kwagent
     script:
         - kwinject gcc foo.c -o nothing
-        - kwbuildproject --url http://localhost:8190/projectile -o kwtables kwinject.out
-        - kwadmin load --url http://localhost:8190 projectile kwtables
+        - kwbuildproject --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT/projectile -o kwtables kwinject.out
+        - kwadmin load --url http://$KLOCWORK_SERVER_HOST:$KLOCWORK_SERVER_PORT projectile kwtables
