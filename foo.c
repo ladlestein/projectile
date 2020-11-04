@@ -1,4 +1,4 @@
 int main() {
-  int* value;
+  int* value = 0;
   *value = 10;
 }
