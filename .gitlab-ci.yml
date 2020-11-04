@@ -1,9 +1,9 @@
 stages:
-    - base analysis
+    - analyze
 
 base analysis:
-    stage: build
-#    image: 10.250.30.67:5000/kwagent
+    stage: analyze
+    only: master
     image: ladlestein/kwagent
     script:
         - kwinject sh -c "gcc foo.c -o nothing"
