@@ -1,2 +1,2 @@
 all: foo.o
-	gcc -o nothing foo.c
+        gcc -o projectile foo.c
