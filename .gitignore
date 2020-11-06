@@ -1,0 +1,4 @@
+*.o
+*.kwlp
+*.kwps
+a.out
